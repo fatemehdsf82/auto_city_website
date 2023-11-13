@@ -1,6 +1,6 @@
 \venv
 \__pycache__
+\testpostgres
 db.sqlite3
 initial_document.docx
 important_searches.docx
-\testpostgres
