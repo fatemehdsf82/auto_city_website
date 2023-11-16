@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # 'testpostgres',
     'products',
     'costumers',
+    'comments',
 ]
 
 MIDDLEWARE = [
