@@ -4,4 +4,4 @@
 db.sqlite3
 initial_document.docx
 important_searches.docx
-.env
+config\.env
