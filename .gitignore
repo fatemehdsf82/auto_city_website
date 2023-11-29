@@ -1,7 +1,3 @@
-\venv
-\__pycache__
-\testpostgres
-db.sqlite3
-initial_document.docx
-important_searches.docx
-config\.env
+.env
+venv2/
+__pycache__
