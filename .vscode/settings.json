@@ -1,9 +1,0 @@
-{
-    "html.format.indentHandlebars": true,
-    "html.format.indentInnerHtml": true,
-    "html.format.templating": true,
-    "html-css-class-completion.enableEmmetSupport": true,
-    "emmet.showExpandedAbbreviation": "always",
-    "html.autoCreateQuotes": true,
-    "open-in-browser.default": "firefox"
-}
