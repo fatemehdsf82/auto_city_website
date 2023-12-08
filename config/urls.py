@@ -18,9 +18,15 @@ import django
 from django.contrib import admin
 from django.urls import path, include
 
+from cart.views import cart_detail_view
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("pagess.urls")),
     # path('accounts/',include('django.contrib.auth.urls')),
     # path('accounts/', include('accounts.urls')),
     path("accounts/", include("allauth.urls")),
+    path("products/", include("products.urls")),
+    path("cart/", include("cart.urls")),
+    # path("rosetta/", include("rosetta.urls")),
 ]

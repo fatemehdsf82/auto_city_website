@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 from django import templatetags
@@ -49,11 +50,13 @@ INSTALLED_APPS = [
     "allauth.account",
     # local
     "bootstrap5",
+    "pages",
     "products",
     "costumers",
     "usercomments",
     "favorites",
     "accounts",
+    "cart",
 ]
 
 SITE_ID = 1
@@ -150,6 +153,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+# STATICFILES_DIRS = ([os.path.join(BASE_DIR, "static")],)
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
