@@ -1,5 +1,7 @@
+from re import T
 from django.db import models
 from datetime import datetime
+from django.shortcuts import reverse
 
 
 class Product(models.Model):
@@ -35,7 +37,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100, name="name")
 
     #! description added
-    product_description = models.TextField(null=True)
+    product_description = models.TextField(null=True, name="description")
     product_cost = models.PositiveIntegerField(name="cost")
     product_category = models.CharField(
         max_length=40, choices=CATEGORY_CHOICES, name="category"
@@ -43,13 +45,22 @@ class Product(models.Model):
     product_brand = models.CharField(
         max_length=40, choices=BRAND_CHOICES, default="blank", name="brand"
     )
+    # product_image = models.ImageField(
+    #     verbose_name=("Product Image"),
+    #     upload_to="products/product_images/",
+    #     blank=True,
+    # )
+
     product_stock = models.IntegerField(default=0, name="stock")
+
     #! status added
-    product_status = models.BooleanField(default=True)
+    product_status = models.BooleanField(default=True, name="status")
 
     # previous datetime
     product_created_at = models.DateTimeField(datetime.now, name="created_at")
-    product_updated_at = models.DateTimeField(auto_now=True, null=True)
+    product_updated_at = models.DateTimeField(
+        auto_now=True, null=True, name="modified_at"
+    )
     # image = models.ImageField(upload_to='product_images/bolboring.jpg',width_field=600,height_field=600, default='product_images/bolboring.jpg')
 
     # ? new datetime
@@ -58,3 +69,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("product_detail", args=[self.pk])
