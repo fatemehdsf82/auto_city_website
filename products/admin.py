@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, Comment
 
 
 # First Model
-# @admin.register(Product)
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "name",
@@ -18,4 +18,9 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 # Second Model
-admin.site.register(Product, ProductAdmin)
+# admin.site.register(Product, ProductAdmin)
+
+
+@admin.register(Comment)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("product", "author", "text", "star", "active")

@@ -1,4 +1,4 @@
-from re import T
+from django.contrib.auth import get_user_model
 from django.db import models
 from datetime import datetime
 from django.shortcuts import reverse
@@ -45,6 +45,7 @@ class Product(models.Model):
     product_brand = models.CharField(
         max_length=40, choices=BRAND_CHOICES, default="blank", name="brand"
     )
+
     # product_image = models.ImageField(
     #     verbose_name=("Product Image"),
     #     upload_to="products/product_images/",
@@ -53,17 +54,14 @@ class Product(models.Model):
 
     product_stock = models.IntegerField(default=0, name="stock")
 
-    #! status added
     product_status = models.BooleanField(default=True, name="status")
 
-    # previous datetime
     product_created_at = models.DateTimeField(datetime.now, name="created_at")
     product_updated_at = models.DateTimeField(
         auto_now=True, null=True, name="modified_at"
     )
-    # image = models.ImageField(upload_to='product_images/bolboring.jpg',width_field=600,height_field=600, default='product_images/bolboring.jpg')
 
-    # ? new datetime
+    # new datetime
     # datetime_created = models.DateTimeField(auto_now_add=True)
     # datetime_modified = models.DateTimeField(auto_now=True)
 
@@ -72,3 +70,33 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product_detail", args=[self.pk])
+
+
+class Comment(models.Model):
+    PRODUCT_STARS = [
+        ("1", "Very Bad"),
+        ("2", "Bad"),
+        ("3", "Normal"),
+        ("4", "Good"),
+        ("5", "Very Good"),
+    ]
+
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="comments"
+    )
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name="comments",
+        name="author",
+    )
+    body = models.TextField(name="text")
+    comment_created_at = models.DateTimeField(datetime.now, name="created_at")
+    comment_updated_at = models.DateTimeField(
+        auto_now=True, null=True, name="modified_at"
+    )
+
+    star = models.CharField(
+        max_length=10, choices=PRODUCT_STARS, name="star", default=5
+    )
+    active = models.BooleanField(default=True)

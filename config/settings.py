@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "pages",
     "products",
     "costumers",
-    "usercomments",
     "favorites",
     "accounts",
     "cart",
