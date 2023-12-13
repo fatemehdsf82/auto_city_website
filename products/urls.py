@@ -1,8 +1,11 @@
 from django.urls import path, include
-from .views import ProductListView, ProductDetatilView
+from .views import ProductListView, ProductDetatilView, CommentCreateView
 
 
 urlpatterns = [
     path("", ProductListView.as_view(), name="product_list"),
     path("<int:pk>/", ProductDetatilView.as_view(), name="product_detail"),
+    path(
+        "comment/<int:product_id>/", CommentCreateView.as_view(), name="comment_create"
+    ),
 ]

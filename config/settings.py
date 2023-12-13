@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     # third-party
     "allauth",
     "allauth.account",
+    "crispy_forms",
+    "crispy_bootstrap4",
     # local
-    "bootstrap5",
+    # "bootstrap5",
     "pages",
     "products",
     "costumers",
@@ -166,8 +168,9 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-# LOGIN_REDIRECT_URL = 'log'
-# SIGNUP_REDIRECT_URL = "login"
+# AUTH_USER_MODEL = "accounts.CustomUser"
+# LOGIN_REDIRECT_URL = "home"
+# LOGOUT_REDIRECT_URL = "home"
 
 
 # allauth settings
@@ -175,3 +178,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SESSION_REMEMBER = True
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

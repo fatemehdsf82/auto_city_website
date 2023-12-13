@@ -1,39 +1,39 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from datetime import datetime
-from django.shortcuts import reverse
+from django.urls import reverse
 
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
-        ("ghataat_badaneh", "ghataat_badaneh"),
-        ("motor_exoz", "motor_exoz"),
-        ("barghi_electricy", "barghi_electricy"),
-        ("roghan_filter", "roghan_filter"),
-        ("ghataat_dakheli", "ghataat_dakheli"),
-        ("enteghal_ghodrat", "enteghal_ghodrat"),
-        ("farman_jelobandi_tormoz", "farman_jelobandi_tormoz"),
-        ("bolboring", "bolboring"),
-        ("kasenamad", "kasenamad"),
-        ("oring", "oring"),
-        ("gardgir", "gardgir"),
-        ("looleh", "looleh"),
-        ("tasmeh", "tasmeh"),
-        ("shelang", "shelang"),
+        ("ghataat_badaneh", "بدنه"),
+        ("motor_exoz", "موتور_اگزوز"),
+        ("barghi_electricy", "برقی_الکتریکی"),
+        ("roghan_filter", "روغن_فیلتر"),
+        ("ghataat_dakheli", "قطعات داخلی"),
+        ("enteghal_ghodrat", "انتقال قدرت"),
+        ("farman_jelobandi_tormoz", "فرمان_جلوبندی_ترمز"),
+        ("bolboring", "بولبورینگ"),
+        ("kasenamad", "کاسه نمد"),
+        ("oring", "اورینگ"),
+        ("gardgir", "گردگیر"),
+        ("looleh", "لوله"),
+        ("tasmeh", "تسمه"),
+        ("shelang", "شلنگ"),
     ]
 
     BRAND_CHOICES = [
-        ("saipa", "saipa"),
-        ("mashad_washer", "mashad_washer"),
-        ("HIC", "HIC"),
-        ("ezaam", "ezaam"),
-        ("crouse", "crouse"),
-        ("amirnia", "amirnia"),
-        ("jaham_lent", "jaham_lent"),
-        ("behran", "behran"),
-        ("isaco", "isaco"),
+        ("saipa", "سایپا"),
+        ("mashad_washer", "مشهد واشر"),
+        ("HIC", "اچ آی سی"),
+        ("ezaam", "عظام"),
+        ("crouse", "کروز"),
+        ("amirnia", "امیرنیا"),
+        ("jahan_lent", "جهان لنت"),
+        ("behran", "بهران"),
+        ("isaco", "ایساکو"),
     ]
-    product_id = models.AutoField(primary_key=True)
+    product_id = models.AutoField(primary_key=True, name="id")
     product_name = models.CharField(max_length=100, name="name")
 
     #! description added
@@ -56,14 +56,13 @@ class Product(models.Model):
 
     product_status = models.BooleanField(default=True, name="status")
 
-    product_created_at = models.DateTimeField(datetime.now, name="created_at")
-    product_updated_at = models.DateTimeField(
-        auto_now=True, null=True, name="modified_at"
-    )
+    # product_created_at = models.DateTimeField(datetime.now, name="created_at")
+    # product_updated_at = models.DateTimeField(
+    #     auto_now=True, null=True, name="modified_at"
+    # )
 
-    # new datetime
-    # datetime_created = models.DateTimeField(auto_now_add=True)
-    # datetime_modified = models.DateTimeField(auto_now=True)
+    datetime_created = models.DateTimeField(auto_now_add=True, name="created_at")
+    datetime_modified = models.DateTimeField(auto_now=True, name="modified_at")
 
     def __str__(self):
         return self.name
@@ -91,12 +90,17 @@ class Comment(models.Model):
         name="author",
     )
     body = models.TextField(name="text")
-    comment_created_at = models.DateTimeField(datetime.now, name="created_at")
-    comment_updated_at = models.DateTimeField(
-        auto_now=True, null=True, name="modified_at"
-    )
+    # comment_created_at = models.DateTimeField(datetime.now, name="created_at")
+    # comment_updated_at = models.DateTimeField(
+    #     auto_now=True, null=True, name="modified_at"
+    # )
+    datetime_created = models.DateTimeField(auto_now_add=True, name="created_at")
+    datetime_modified = models.DateTimeField(auto_now=True, name="modified_at")
 
     star = models.CharField(
         max_length=10, choices=PRODUCT_STARS, name="star", default=5
     )
     active = models.BooleanField(default=True)
+
+    def get_absolute_url(self):
+        return reverse("product_detail", args=[self.product_id])
