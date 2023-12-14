@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-14 17:06+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/products/product_detail.html:22
+msgid "product details"
+msgstr "جزئیات محصول"
+
+#: templates/products/product_detail.html:45
+#: templates/products/product_detail.html:278
+#: templates/products/product_detail.html:296
+#: templates/products/product_detail.html:314
+#: templates/products/product_detail.html:321
+msgid "$"
+msgstr "تومان"
+
+#: templates/products/product_detail.html:66
+msgid "add to cart"
+msgstr "افزودن به سبد خرید"
+
+#: templates/products/product_detail.html:70
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: templates/products/product_detail.html:85
+msgid "product description"
+msgstr "توضیحات محصول"
+
+#: templates/products/product_detail.html:88
+msgid "attributes"
+msgstr "ویژگی ها"
+
+#: templates/products/product_detail.html:91
+#: templates/products/product_detail.html:133
+msgid "comments"
+msgstr "نظرات"
+
+#: templates/products/product_detail.html:111
+msgid "weight"
+msgstr "وزن"
+
+#: templates/products/product_detail.html:115
+msgid "size"
+msgstr "سایز"
+
+#: templates/products/product_detail.html:119
+msgid "color"
+msgstr "رنگ"
+
+#: templates/products/product_detail.html:168
+msgid "please write your comment"
+msgstr "لطفا نظر خود را بنویسید"
+
+#: templates/products/product_detail.html:173
+msgid "submit"
+msgstr ""
+
+#: templates/products/product_detail.html:228
+msgid "about us"
+msgstr ""
