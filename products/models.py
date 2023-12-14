@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 class Product(models.Model):
@@ -89,7 +90,7 @@ class Comment(models.Model):
         related_name="comments",
         name="author",
     )
-    body = models.TextField(name="text")
+    body = models.TextField(verbose_name=_("comment_text"), name="text")
     # comment_created_at = models.DateTimeField(datetime.now, name="created_at")
     # comment_updated_at = models.DateTimeField(
     #     auto_now=True, null=True, name="modified_at"
@@ -98,7 +99,11 @@ class Comment(models.Model):
     datetime_modified = models.DateTimeField(auto_now=True, name="modified_at")
 
     star = models.CharField(
-        max_length=10, choices=PRODUCT_STARS, name="star", default=5
+        max_length=10,
+        choices=PRODUCT_STARS,
+        name="star",
+        default=5,
+        verbose_name=_("score"),
     )
     active = models.BooleanField(default=True)
 
