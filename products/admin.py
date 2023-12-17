@@ -7,7 +7,7 @@ from .models import Product, Comment
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "cost",
+        "price",
         "category",
         "stock",
         "brand",

@@ -39,7 +39,7 @@ class Product(models.Model):
 
     #! description added
     product_description = models.TextField(null=True, name="description")
-    product_cost = models.PositiveIntegerField(name="cost")
+    product_price = models.PositiveIntegerField(name="price")
     product_category = models.CharField(
         max_length=40, choices=CATEGORY_CHOICES, name="category"
     )
@@ -74,11 +74,11 @@ class Product(models.Model):
 
 class Comment(models.Model):
     PRODUCT_STARS = [
-        ("1", "Very Bad"),
-        ("2", "Bad"),
-        ("3", "Normal"),
-        ("4", "Good"),
-        ("5", "Very Good"),
+        ("1", _("Very Bad")),
+        ("2", _("Bad")),
+        ("3", _("Normal")),
+        ("4", _("Good")),
+        ("5", _("Very Good")),
     ]
 
     product = models.ForeignKey(

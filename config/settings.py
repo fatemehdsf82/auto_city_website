@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "crispy_forms",
     "crispy_bootstrap4",
+    "rosetta",
     # local
     # "bootstrap5",
     "pages",
@@ -86,6 +87,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # custom context processors
+                "cart.context_processors.cart",
             ],
         },
     },
@@ -141,7 +144,13 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+# LANGUAGE_CODE = "en-us"
 LANGUAGE_CODE = "fa"
+
+LANGUAGES = (
+    ("en", "English"),
+    ("fa", "Persian"),
+)
 
 TIME_ZONE = "Asia/Tehran"
 
