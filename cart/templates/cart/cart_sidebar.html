@@ -12,7 +12,7 @@
                         <li class="mini-cart__product d-flex justify-content-between">
                             <div class="mini-cart__product__image">
                                 <a href="#">
-                                    <img src="assets/img/products/prod-1-100x100.jpg" alt="products">
+                                    <img src="{{ item.product_obj.image.url }}" alt="products">
                                 </a>
                             </div>
                             <div class="mini-cart__product__content pt-2">
@@ -23,7 +23,7 @@
                                     </a>
                                 </span>
                                 <span class="mini-cart__product__quantity">
-                                    <span>{{ item.product_obj.price }} {% trans "$" %}</span> &#215; <span>{{ item.quantity }}</span>
+                                    <span>{{ item.product_obj.price}} {% trans "$" %}</span> &#215; <span>{{ item.quantity }}</span>
                                 </span>
                             </div>
                         </li>
@@ -34,7 +34,7 @@
                     <span class="ammount">{{ cart.get_total_price }} {% trans "$" %}</span>
                 </div>
                 <div class="mini-cart__buttons">
-                    <a href="{% url "cart_detail" %}" class="btn btn-fullwidth btn-bg-sand mb--20">{% trans "go to cart" %}</a>
+                    {% comment %} <a href="{% url "cart_detail" %}" class="btn btn-fullwidth btn-bg-sand mb--20">{% trans "go to cart" %}</a> {% endcomment %}
                     <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">{% trans "chekout" %}</a>
                 </div>
             </div>

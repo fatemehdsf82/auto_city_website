@@ -59,11 +59,6 @@
                                             <span class="mm-text">صفحه اصلی</span>
                                         </a>
                                     </li>
-                                    {% comment %} <li class="mainmenu__item menu-item-has-children">
-                                        <a href="Blog.html" class="mainmenu__link">
-                                            <span class="mm-text">وبلاگ</span>
-                                        </a>
-                                    </li> {% endcomment %}
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'product_list'%}" class="mainmenu__link">
                                             <span class="mm-text">محصولات</span>
@@ -72,6 +67,11 @@
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'cart_detail'%}" class="mainmenu__link">
                                             <span class="mm-text">سبد خرید</span>
+                                        </a>
+                                    </li>
+                                    <li class="mainmenu__item menu-item-has-children">
+                                        <a href="Blog.html" class="mainmenu__link">
+                                            <span class="mm-text">وبلاگ</span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item">
@@ -156,6 +156,40 @@
 
     <!-- Main JS -->
     <script src="{% static 'js/main.js'%}"></script>
+
+    <script>function convertToPersianDigits(number) {
+        var digitsInPersian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return number.toString().replace(/\d/g, function(digit) {
+            return digitsInPersian[parseInt(digit, 10)];
+        });
+    }
+    
+    $(document).ready(function() {
+        // Convert numbers in input fields as they are entered
+        $('input[type="text"], input[type="number"]').on('input', function() {
+            var enteredValue = $(this).val();
+            var lastDigit = enteredValue.slice(-1);
+            var convertedDigit = convertToPersianDigits(lastDigit);
+    
+            if (lastDigit !== convertedDigit) {
+                $(this).val(enteredValue.slice(0, -1) + convertedDigit);
+            }
+        });
+    
+        // Convert input field values on blur
+        $('input[type="text"], input[type="number"]').on('blur', function() {
+            var originalValue = $(this).val();
+            var persianConvertedValue = convertToPersianDigits(originalValue);
+            $(this).val(persianConvertedValue);
+        });
+    
+        // Convert existing numbers in text nodes on page load
+        $('body').find('*').contents().each(function() {
+            if (this.nodeType === 3) { // Text node
+                this.nodeValue = convertToPersianDigits(this.nodeValue);
+            }
+        });
+    });</script>
 
     
 </body>

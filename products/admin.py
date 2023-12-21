@@ -12,7 +12,6 @@ class ProductAdmin(admin.ModelAdmin):
         "stock",
         "brand",
         "status",
-        "created_at",
         "modified_at",
     )
 
