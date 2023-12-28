@@ -5,8 +5,8 @@ from django.utils.translation import gettext as _
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
+    title = models.CharField(max_length=200, name="title")
+    content = models.TextField(name="content")
     post_created_at = models.DateTimeField(datetime.now, name="created_at", blank=True)
     post_updated_at = models.DateTimeField(
         auto_now=True, null=True, name="modified_at", blank=True

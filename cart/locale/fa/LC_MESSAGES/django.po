@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-22 20:40+0330\n"
-"PO-Revision-Date: 2023-12-22 20:41+0330\n"
-"Last-Translator: fsdfsdf sdfsdfs <fdastyafteh@gmail.com>\n"
+"POT-Creation-Date: 2023-12-28 10:50+0330\n"
+"PO-Revision-Date: 2023-12-28 10:52+0330\n"
+"Last-Translator: lwejtknferjfe keljrmgkerge <fdastyafteh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -44,22 +44,28 @@ msgstr "سبد خرید خالی است! "
 msgid "products"
 msgstr "فروشگاه"
 
+#: templates/cart/cart_detail.html:89
+#| msgid "go to cart"
+msgid "empty cart"
+msgstr "خالی کردن سبد خرید"
+
+#: templates/cart/cart_detail.html:124
+#| msgid "chekout"
+msgid "checkout"
+msgstr "پرداخت"
+
 #: templates/cart/cart_sidebar.html:33
 msgid "total"
 msgstr "مجموع"
 
-#: templates/cart/cart_sidebar.html:39
+#: templates/cart/cart_sidebar.html:40
 msgid "chekout"
 msgstr "پرداخت"
 
-#: views.py:55
-#| msgid "product successfully removed from cart"
+#: views.py:56
 msgid "all products successfully removed from your cart."
 msgstr "محصول شما با موفقیت از سبد خرید حذف شد."
 
-#: views.py:58
+#: views.py:59
 msgid "your cart is already empty."
 msgstr "سبد خرید شما خالی است."
-
-#~ msgid "go to cart"
-#~ msgstr "رفتن به سبد خرید"

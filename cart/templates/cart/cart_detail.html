@@ -96,17 +96,16 @@
                     <div class="col-lg-4">
                         <div class="cart-collaterals">
                             <div class="cart-totals">
-                                <h5 class="font-size-14 font-bold mb--15">مجموع</h5>
                                 <div class="cart-calculator">
-                                    {% comment %} <div class="cart-calculator__item">
+                                    <div class="cart-calculator__item order-total">
                                         <div class="cart-calculator__item--head">
                                             <span>مجموع</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>۳۴۶,۰۰۰ تومان</span>
+                                            <span class="product-price-wrapper">
+                                                <span>{{ cart.get_total_product}} عدد</span>
+                                            </span>
                                         </div>
-                                    </div> {% endcomment %}
-                                    <div class="cart-calculator__item order-total">
                                         <div class="cart-calculator__item--head">
                                             <span>جمع کل</span>
                                         </div>
