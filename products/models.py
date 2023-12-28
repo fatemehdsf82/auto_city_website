@@ -1,10 +1,8 @@
-from email.policy import default
 from django.contrib.auth import get_user_model
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from sqlalchemy import null, true
 
 
 class Product(models.Model):
