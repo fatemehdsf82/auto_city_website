@@ -1,3 +1,4 @@
+from enum import unique
 from django.contrib.auth import get_user_model
 from django.db import models
 from datetime import datetime
@@ -36,10 +37,11 @@ class Product(models.Model):
     # ]
     product_id = models.AutoField(primary_key=True, name="id")
     product_name = models.CharField(max_length=100, name="name")
-    product_car_type = models.CharField(max_length=100, name="car_type", null=True)
+    # product_car_type = models.CharField(max_length=100, name="car_type", null=True)
     product_description = models.TextField(null=True, name="description", blank=True)
     product_price = models.PositiveIntegerField(name="price")
-    product_category = models.CharField(max_length=40, name="category")
+    # product_category = models.CharField(max_length=40, name="category")
+    tags = models.ManyToManyField("Tag")
     product_brand = models.CharField(max_length=40, null=True, name="brand")
 
     product_image = models.ImageField(
@@ -68,6 +70,14 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product_detail", args=[self.pk])
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Comment(models.Model):

@@ -31,6 +31,9 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    
+
+    
 
 </head>
 
@@ -54,15 +57,31 @@
                             </div>
                             <div class="mainmenu-nav d-none d-lg-block w-100 pr-3">
                                 <ul class="mainmenu d-lg-flex jusity-content-end jusity-content-lg-start pt-4">
-                                    <li class="mainmenu__item menu-item-has-children active">
+                                    <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'home'%}" class="mainmenu__link">
                                             <span class="mm-text">صفحه اصلی</span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'product_list'%}" class="mainmenu__link">
-                                            <span class="mm-text">محصولات</span>
+                                            <span class="mm-text">محصولات <i class="fa fa-caret-down"></i></span>
                                         </a>
+                                        <ul class="sub-menu">
+                                        
+                                            <li><a style="text-align: right;" href="/products/category/bodyparts/">قطعات بدنه</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/electric/">برقی و الکتریکی</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/engineandexhaust/">موتور و اگزوز</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/oilandfilter/">روغن و فیلتر</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/internalparts/">قطعات داخلی</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/steeringwheelandbrake/">فرمان و جلوبندی و ترمز</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/bolboring/">بلبرینگ</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/seal/">کاسه نمد</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/oring/">اورینگ</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/duster/">گردگیر</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/pipeandhoses/">لوله و شیلنگ</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/belt/">تسمه</a></li>
+                                            <li><a style="text-align: right;" href="/products/category/vasher/">واشر</a></li>
+                                        </ul>
                                     </li>
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'cart_detail'%}" class="mainmenu__link">

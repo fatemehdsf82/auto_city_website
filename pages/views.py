@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from django.views import generic
 from .models import Blog
 from products.forms import CommentForm
+from .forms import ProductSearchForm
+from products.models import Product
 
 
 class HomePageView(TemplateView):
@@ -24,7 +26,24 @@ class BlogDetailView(generic.DetailView):
     template_name = "pages/blog_detail.html"
     context_object_name = "blog"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["comment_form"] = CommentForm()
-    #     return context
+
+def search_view(request):
+    form = ProductSearchForm()
+    return render(request, "pages/search.html", {"form": form})
+
+
+def result_view(request):
+    form = ProductSearchForm(
+        request.GET or None
+    )  # Use GET request to maintain pagination links
+
+    if request.method == "GET" and form.is_valid():
+        products = Product.objects.all()
+
+        # # Retrieve and convert form data
+        # name = form.cleaned_data.get("name")
+        # brand = form.cleaned_data.get("brand")
+        # tags = form.cleaned_data.get("tags")
+
+    context = {"form": form, "products": products}
+    return render(request, "pages/result.html", context)

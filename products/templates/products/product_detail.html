@@ -10,6 +10,8 @@
     Product Detail
 {% endblock %}
 
+
+
 {% block content %}
 
     <!-- Main Wrapper Start -->
@@ -49,12 +51,12 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="product-footer-meta mt-5 pt-5">
+                                <div class="product-footer-meta mt-5 pt-5 ">
                                     <p><span class="m-0">{% trans "Categories" %}:</span>
-                                        <a href="shop.html">لباس</a>,
-                                        <a href="shop.html">تابستانی</a>,
-                                        <a href="shop.html">گرم</a>,
-                                        <a href="shop.html">زنانه</a>
+                                        {% for tag in product.tags.all %}
+                                            <a href="{% url "category_view" tag.slug %}">{{ tag }} ، </a>    
+                                        {% endfor %}
+
                                     </p>
                                 </div>
                             </div>

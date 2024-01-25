@@ -1,18 +1,34 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404, reverse
+from django.shortcuts import get_object_or_404, reverse, render
 from django.utils.translation import gettext as _
 from products.forms import CommentForm
 from .models import Product, Comment
 from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # from cart.forms import AddToCartProductForm
 
 
-class ProductListView(generic.ListView):
-    # model = Product
-    queryset = Product.objects.filter(status=True)
-    template_name = "products/product_list.html"
-    context_object_name = "products"
+# class ProductListView(generic.ListView):
+#     # model = Product
+#     queryset = Product.objects.filter(status=True)
+#     template_name = "products/product_list.html"
+#     context_object_name = "products"
+
+
+def product_list_view(request):
+    product_list = Product.objects.filter(status=True)
+    paginator = Paginator(product_list, 6)
+
+    page = request.GET.get("page")
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    return render(request, "products/product_list.html", {"products": products})
 
 
 class ProductDetatilView(generic.DetailView):
@@ -42,3 +58,8 @@ class CommentCreateView(generic.CreateView):
         messages.success(self.request, _("comment successfully created"))
 
         return super().form_valid(form)
+
+
+def category_view(request, tag):
+    products = Product.objects.filter(tags__slug=tag)
+    return render(request, "products/product_list.html", {"products": products})

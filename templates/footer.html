@@ -2,24 +2,25 @@
 {% load i18n %}
 <!-- Footer Start-->
     <footer class="footer">
-        <div class="footer-top bg-color ptb--50" data-bg-color="#f6f6f6">
+        <div class="footer bg-color ptb--20" data-bg-color="#f6f6f6">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9 text-center">
-                        <div class="footer-widget mb--50">
+                        <div class="footer-menu mb--50">
                             {% comment %} <div class="textwidget">
                                 <img src="{% static "img/garage.png" %}" alt="Logo">
                             </div> {% endcomment %}
                         </div>
-                        <div class="footer-widget mb--50 pb--1">
-                            <ul class="footer-menu">
-                                <li><a href="">{% trans "about us" %}</a></li>
-                                <li><a href="">{% trans "call with us" %}</a></li>
-                            </ul>
+                        <div class="footer-menu mb--50 " >
+                        
+                            <a href="{% url "aboutus" %}">درباره ما</a>
+                            |
+                            <a href="{% url "aboutus" %}">تماس با ما</a>
+                            |
+                            <a href="https://www.google.com/maps/place/%D9%86%D9%85%D8%A7%DB%8C%D9%86%D8%AF%DA%AF%DB%8C+%D9%85%D8%AC%D8%A7%D8%B2+%DB%B8%DB%B6%DB%B2%DB%B4+%D8%B3%D8%A7%DB%8C%D9%BE%D8%A7+%DB%8C%D8%AF%DA%A9%E2%80%AD/@33.9825332,51.4324232,20z/data=!4m6!3m5!1s0x3f96851d35aa784f:0x396d2a27688ce87e!8m2!3d33.9827026!4d51.4325001!16s%2Fg%2F11nckr27s3?">آدرس</a>
+                           
                         </div>                        
-                        <div class="footer-widget">
-                            autocity.com © | all rights reserved
-                        </div>
+                       
                     </div>
                 </div>
             </div>

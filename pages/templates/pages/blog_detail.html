@@ -7,20 +7,21 @@
     Blog Detail
 {% endblock %}
 
+{% include "footer.html" %}
+
+
 {% block content %}  
     {% include "top_header.html" with header_name=blog.title %}
 
-    <div class="container mt-5 mx-auto"> 
+    <div class="container"> 
         <div class="row">
             <div class="col-lg-12">
                 <article>
-                    <header class="mb-4">
-                        <div class="text-muted fst-italic mb-2">{{ blog.created_at }}</div>
-                    </header>
-
+                   
+                    <br>
                     {% if blog.image %}
                         <figure class="mb-5">
-                            <img class="img-fluid rounded"  src="{{ blog.image.url }}" alt="">
+                            <img class="container-fluid "  src="{{ blog.image.url }}" alt="">
                         </figure>
                     {% endif %}
                   

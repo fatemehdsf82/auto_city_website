@@ -1,14 +1,12 @@
 from django.contrib import admin
-from .models import Product, Comment
+from .models import Product, Comment, Tag
 
 
-# First Model
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "price",
-        "category",
         "stock",
         "brand",
         "status",
@@ -16,8 +14,9 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 
-# Second Model
-# admin.site.register(Product, ProductAdmin)
+@admin.register(Tag)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug")
 
 
 @admin.register(Comment)
