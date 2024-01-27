@@ -1,3 +1,5 @@
+from itertools import product
+from multiprocessing import context
 from django.views import generic
 from django.shortcuts import get_object_or_404, reverse, render
 from django.utils.translation import gettext as _
@@ -5,20 +7,30 @@ from products.forms import CommentForm
 from .models import Product, Comment
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import ProductSearchForm
 
-# from cart.forms import AddToCartProductForm
 
+def product_search(request):
+    if request.method == "GET":
+        form = ProductSearchForm(request.GET)
+        if form.is_valid():
+            product_name = form.cleaned_data["p_name"]
+            products = Product.objects.filter(name__icontains=product_name)
+            return render(
+                request,
+                "products/product_list.html",
+                {"products": products, "query": product_name},
+            )
 
-# class ProductListView(generic.ListView):
-#     # model = Product
-#     queryset = Product.objects.filter(status=True)
-#     template_name = "products/product_list.html"
-#     context_object_name = "products"
+    else:
+        form = ProductSearchForm()
+
+    return render(request, "products/product_list.html", {"form": form})
 
 
 def product_list_view(request):
     product_list = Product.objects.filter(status=True)
-    paginator = Paginator(product_list, 6)
+    paginator = Paginator(product_list, 8)
 
     page = request.GET.get("page")
     try:

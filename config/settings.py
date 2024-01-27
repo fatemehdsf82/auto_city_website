@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # third-party
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
     "crispy_forms",
     "crispy_bootstrap4",
     "rosetta",
@@ -191,8 +192,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # AUTH_USER_MODEL = "accounts.CustomUser"
-# LOGIN_REDIRECT_URL = "home"
-# LOGOUT_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 
 
 # allauth settings

@@ -1,0 +1,10 @@
+{% if products %}
+    <h2>نتایج جستجو برای "{{ query }}"</h2>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.product_name }} </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>متاسفانه هیچ محصولی با این نام پیدا نشد.</p>
+{% endif %}

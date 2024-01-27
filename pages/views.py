@@ -5,6 +5,12 @@ from .models import Blog
 from products.forms import CommentForm
 from .forms import ProductSearchForm
 from products.models import Product
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm
+from django.utils.translation import gettext as _
+from django.contrib.auth import login
 
 
 class HomePageView(TemplateView):
@@ -47,3 +53,73 @@ def result_view(request):
 
     context = {"form": form, "products": products}
     return render(request, "pages/result.html", context)
+
+
+# @login_required
+# def profile_view(request):
+#     if request.method == "POST":
+#         profile_form = ProfileUpdateForm(request.POST, instance=request.user)
+
+#         if profile_form.is_valid():
+#             user = profile_form.save(commit=False)
+#             user.user = request.user
+#             user.save()
+#             return redirect("profile")
+#     else:
+#         profile_form = ProfileUpdateForm()
+
+#     return render(
+#         request,
+#         "pages/profile.html",
+#         {
+#             "form": profile_form,
+#         },
+#     )
+
+
+@login_required
+def profile_view(request):
+    profile_form = ProfileUpdateForm()
+
+    if request.method == "POST":
+        profile_form = ProfileUpdateForm(request.POST)
+
+        if profile_form.is_valid():
+            user = profile_form.save(commit=False)
+            user.user = request.user
+            user.save()
+            return redirect("profile")
+    else:
+        profile_form = ProfileUpdateForm()
+
+    return render(
+        request,
+        "pages/profile.html",
+        {
+            "form": profile_form,
+        },
+    )
+
+
+# @login_required
+# def profile_view(request):
+#     initial_email = request.user.email if request.user.is_authenticated else ""
+
+#     if request.method == "POST":
+#         profile_form = ProfileForm(request.POST)
+#         if profile_form.is_valid():
+#             user = profile_form.save(commit=False)
+#             user.user = request.user
+#             user.save()
+#             messages.success(request, _("your profile has successfully placed."))
+#             return redirect("profile")
+#     else:
+#         profile_form = ProfileForm(initial={"email": initial_email})
+
+#     return render(
+#         request,
+#         "pages/profile.html",
+#         {
+#             "form": profile_form,
+#         },
+#     )

@@ -129,4 +129,17 @@
     </div>
     <!-- Main Content Wrapper Start -->
 
+    <div class="searchform__popup" id="searchForm">
+        <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+        <div class="searchform__body">
+            <p>در باکس زیر عبارت خود را وارد کنید</p>
+            <form class="searchform" method="GET" action="{% url 'product_search' %}">
+                <input type="text" name="p_name" id="popup-search" class="searchform__input" placeholder="جستجو در بین محصولات...">
+                <button type="submit" class="searchform__submit"><i class="flaticon flaticon-magnifying-glass-icon"></i></button>
+            </form>
+            
+        </div>
+    </div>
+    
+
 {% endblock %}

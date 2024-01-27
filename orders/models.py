@@ -7,7 +7,7 @@ class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=11)
     address = models.CharField(max_length=700)
     is_paid = models.BooleanField(default=False)
     order_note = models.CharField(max_length=700, blank=True)

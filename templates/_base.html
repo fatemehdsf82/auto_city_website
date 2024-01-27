@@ -104,9 +104,14 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-7 col-12 p-0">
                         <ul class="header-toolbar">
-                            <li class="header-toolbar__item">
+                            {% comment %} <li class="header-toolbar__item">
                                 <a href="wishlist.html" class="header-toolbar__btn mx-4">
                                     <i class="flaticon flaticon-like"></i>
+                                </a>
+                            </li> {% endcomment %}
+                            <li class="header-toolbar__item">
+                                <a href="#searchForm" class="header-toolbar__btn toolbar-btn ml--15">
+                                    <i class="flaticon flaticon-search"></i>
                                 </a>
                             </li>
                             <li class="header-toolbar__item mini-cart-item">
@@ -116,33 +121,29 @@
                                 </a>
                             </li>
                             <li class="header-toolbar__item user-info">
-                                <a href="my-account.html" class="header-toolbar__btn">
+                                <a href="{% url "account_login" %}" class="header-toolbar__btn ">
                                     <i class="flaticon flaticon-user"></i>
                                 </a>
                                 <ul class="user-info-menu">
                                     {% if user.is_authenticated %}
                                         <li>
-                                            <a class="text-right" href="{% url "account_logout" %}">{% trans "logout" %}</a>
+                                            <a class="text-right" href="{% url "profile" %}">حساب کاربری</a>
                                         </li>
                                         <li>
-                                            <a class="text-right" href="profile.html">{% trans "profile" %}</a>
+                                            <a class="text-right" href="{% url "account_logout" %}">خروج</a>
                                         </li>
                                     {% else %}
                                         <li>
-                                            <a class="text-right" href="{% url "account_login" %}">{% trans "login" %}</a>
+                                            <a class="text-right" href="{% url "account_signup" %}">ثبت نام</a>
                                         </li>
                                         <li>
-                                            <a class="text-right" href="{% url "account_signup" %}">{% trans "signup" %}</a>
+                                            <a class="text-right" href="{% url "account_login" %}">ورود</a>
                                         </li>
                                         
                                     {% endif %}
                                 </ul>
                             </li>
-                            <li class="header-toolbar__item">
-                                <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
-                                    <i class="flaticon flaticon-search"></i>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -155,7 +156,18 @@
         </div>
     </header>
     <!-- Header End -->
-
+    <div class="searchform__popup" id="searchForm">
+        <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+        <div class="searchform__body">
+            <p>در باکس زیر عبارت خود را وارد کنید</p>
+            <form class="searchform" method="GET" action="{% url 'product_search' %}">
+                <input type="text" name="p_name" id="popup-search" class="searchform__input" placeholder="جستجو در بین محصولات...">
+                <button type="submit" class="searchform__submit"><i class="flaticon flaticon-magnifying-glass-icon"></i></button>
+            </form>
+            
+        </div>
+    </div>
+    
     {% if messages %}
         <div class="container">
             {% for message in messages %}

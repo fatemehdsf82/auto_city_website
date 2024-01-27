@@ -4,6 +4,7 @@ from .views import (
     CommentCreateView,
     category_view,
     product_list_view,
+    product_search,
 )
 
 
@@ -15,4 +16,5 @@ urlpatterns = [
     path(
         "comment/<int:product_id>/", CommentCreateView.as_view(), name="comment_create"
     ),
+    path("product_search/", product_search, name="product_search"),
 ]

@@ -7,34 +7,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Product(models.Model):
-    # CATEGORY_CHOICES = [
-    #     ("ghataat_badaneh", "بدنه"),
-    #     ("motor_exoz", "موتور_اگزوز"),
-    #     ("barghi_electricy", "برقی_الکتریکی"),
-    #     ("roghan_filter", "روغن_فیلتر"),
-    #     ("ghataat_dakheli", "قطعات داخلی"),
-    #     ("enteghal_ghodrat", "انتقال قدرت"),
-    #     ("farman_jelobandi_tormoz", "فرمان_جلوبندی_ترمز"),
-    #     ("bolboring", "بولبرینگ"),
-    #     ("kasenamad", "کاسه نمد"),
-    #     ("oring", "اورینگ"),
-    #     ("gardgir", "گردگیر"),
-    #     ("looleh", "لوله"),
-    #     ("tasmeh", "تسمه"),
-    #     ("shelang", "شلنگ"),
-    # ]
-
-    # BRAND_CHOICES = [
-    #     ("saipa", "سایپا"),
-    #     ("mashad_washer", "مشهد واشر"),
-    #     ("HIC", "اچ آی سی"),
-    #     ("ezaam", "عظام"),
-    #     ("crouse", "کروز"),
-    #     ("amirnia", "امیرنیا"),
-    #     ("jahan_lent", "جهان لنت"),
-    #     ("behran", "بهران"),
-    #     ("isaco", "ایساکو"),
-    # ]
     product_id = models.AutoField(primary_key=True, name="id")
     product_name = models.CharField(max_length=100, name="name")
     # product_car_type = models.CharField(max_length=100, name="car_type", null=True)
