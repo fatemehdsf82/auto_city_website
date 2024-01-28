@@ -94,13 +94,16 @@
                                                                 {% endif %}
                                                                 
                                                             </a>
-                                                            <div class="ShoppingYar-product-action">
+                                                            {% comment %} <div class="ShoppingYar-product-action">
                                                                 <div class="product-action d-flex">
-                                                                    <a href="wishlist.html" class="action-btn">
+                                                                    <a href="{% url "favorite_add" product.id %}" class="action-btn">
                                                                         <i class="flaticon flaticon-like"></i>
                                                                     </a>
                                                                 </div>
-                                                            </div>
+                                                            </div> {% endcomment %}
+                                                  
+                                                            
+                                                      
                                                         </figure>
                                                         <div class="product-info">
                                                             <h3 class="product-title mb--15">

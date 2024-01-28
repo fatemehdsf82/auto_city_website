@@ -44,7 +44,7 @@
     <!-- Header Start -->
     <header class="header">
         <div class="header-inner fixed-header">
-            <div class="container">
+            <div class=" mr--40 ml--90">
                 <div class="row align-items-center">
                     <div class="col-xl-9 col-lg-8 col-5 col-xs-0 col-none col-sm-block p-0">
                         <nav class="main-navigation">
@@ -59,7 +59,7 @@
                                 <ul class="mainmenu d-lg-flex jusity-content-end jusity-content-lg-start pt-4">
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url 'home'%}" class="mainmenu__link">
-                                            <span class="mm-text">صفحه اصلی</span>
+                                            <span class="mm-text">خانه</span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item menu-item-has-children">
@@ -104,16 +104,20 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-7 col-12 p-0">
                         <ul class="header-toolbar">
-                            {% comment %} <li class="header-toolbar__item">
-                                <a href="wishlist.html" class="header-toolbar__btn mx-4">
-                                    <i class="flaticon flaticon-like"></i>
-                                </a>
-                            </li> {% endcomment %}
                             <li class="header-toolbar__item">
-                                <a href="#searchForm" class="header-toolbar__btn toolbar-btn ml--15">
+                                <a href="#searchForm" class="header-toolbar__btn toolbar-btn ml--10">
                                     <i class="flaticon flaticon-search"></i>
                                 </a>
                             </li>
+
+                            <li class="header-toolbar__item mini-cart-item">
+                                <a href="{% url "favorite_detail" %}" class="header-toolbar__btn mini-cart-btn ml--15">
+                                    <i class="flaticon flaticon-like"></i>
+                                    {% comment %} <sup class="mini-cart-count">{{ favorite|length }}</sup> {% endcomment %}
+
+                                </a>
+                            </li>
+                          
                             <li class="header-toolbar__item mini-cart-item">
                                 <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                     <i class="flaticon flaticon-shopping-cart"></i>

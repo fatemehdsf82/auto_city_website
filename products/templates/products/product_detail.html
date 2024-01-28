@@ -15,24 +15,24 @@
 {% block content %}
 
     <!-- Main Wrapper Start -->
-        {% include "top_header.html" with header_name=product.name %}
+        {% include "top_header.html" with header_name="جزئیات محصول" %}
 
         <!-- Main Content Wrapper Start -->
         <div class="main-content-wrapper">
             <div class="page-content-inner ptb--80">
                 <div class="container">
-                    <div class="row no-gutters mb--80">
+                    <div class="row no-gutters mb--50">
                         <div class="col-12 col-sm-4 product-main-image d-flex align-content-center">
                             {% if product.image %}
                                 <img class="m-auto" style="max-height: 400px;" src="{{ product.image.url }}" alt="">
                             {% endif %}
                         </div>
                         <div class="col-12 col-sm-8 product-main-details mt-md--50">
-                            <div class="product-summary pl-lg--30 pl-md--0 text-right p-4">
-                                <h3 class="product-title mb--20">{{ product.name }}</h3>
-                                <p class="product-short-description mb--20">
+                            <div class="product-summary pl-lg--10 pl-md--0 text-right p-4">
+                                <h3 class="product-title mr--1">{{ product.name }}</h3>
+                                {% comment %} <p class="product-short-description mb--20">
                                     {{ product.description}}
-                                </p>
+                                </p> {% endcomment %}
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
                                     <span class="money text-success">{{ product.price|translate_number }} {% trans "$" %}</span>
                                     {% comment %} <span class="price-separator">-</span>
@@ -45,8 +45,21 @@
                                             <div class="quantity">
                                                 <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1" max="30">
                                             </div>
-                                            <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                            <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 mr--10">
                                                 {% trans "add to cart" %}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="product-action d-flex align-items-sm-center align-content-center mt--50">
+                                    <form action="{% url "favorite_add" product.id %}" method='POST'>
+                                        {% csrf_token %}
+                                        <div class="quantity-wrapper d-flex justify-content-start">
+                                            <div class="quantity">
+                                                <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1" max="30">
+                                            </div>
+                                            <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 mr--10">
+                                                {% trans "add to wishlist" %}
                                             </button>
                                         </div>
                                     </form>
@@ -66,18 +79,18 @@
                         <div class="col-12">
                             <div class="product-data-tab tab-style-3">
                                 <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
-                                    <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                    {% comment %} <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
                                         <span>{% trans "product description" %}</span>
-                                    </a>
+                                    </a> {% endcomment %}
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
-                                        <span>{% trans "attributes" %}</span>
+                                        <span>{% trans "product description" %}</span>
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
                                         <span>{% trans "comments" %} ({{product.comments.count}})</span>
                                     </a>
                                 </div>
                                 <div class="tab-content product-data-tab__content" id="product-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                    {% comment %} <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description text-justify">
                                             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
                                                 طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
@@ -87,30 +100,23 @@
                                                 ی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
 
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                     <div class="tab-pane text-right" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
-                                        <div class="table-content table-responsive">
-                                            <table class="table shop_attributes">
+                                        <div class="container">
+                                            <p class="product-short-description mb--20">
+                                                {{ product.description|linebreaksbr }}
+                                            </p>
+                                       
+                                            {% comment %} <table class="table shop_attributes">
                                                 <tbody>
                                                     <tr>
                                                         <th>{% trans "weight" %}</th>
                                                         <td>۴۳۰ گرم</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th>{% trans "size" %}</th>
-                                                        <td>XL</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>{% trans "color" %}</th>
-                                                        <td>
-                                                            <a href="shop-sidebar.html">مشکی</a>,
-                                                            <a href="shop-sidebar.html">سبز</a>,
-                                                            <a href="shop-sidebar.html">قرمز</a>,
-                                                            <a href="shop-sidebar.html">نارنجی</a>,
-                                                        </td>
-                                                    </tr>
+                                        
+                                                
                                                 </tbody>
-                                            </table>
+                                            </table> {% endcomment %}
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">

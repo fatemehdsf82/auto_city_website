@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-27 21:18+0330\n"
+"PO-Revision-Date: 2024-01-27 21:19+0330\n"
+"Last-Translator: فاطمه دست یافته <fatemehdsf82@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: favorite.py:29
+msgid "product successfully added to wishlist"
+msgstr "محصول شما با موفقیت از لیست علاقه مندی ها حذف شد"
+
+#: favorite.py:38
+msgid "product successfully removed from wishlist"
+msgstr "محصول شما با موفقیت به لیست علاقه مندی ها اضافه شد"
+
+#: templates/favorites/favorite.html:53
+msgid "$"
+msgstr "تومان"
+
+#: templates/favorites/favorite.html:78
+msgid "wishlist is empty! please add some products to the wishlist"
+msgstr "لیست علاقه مندی ها خالی است"
+
+#: templates/favorites/favorite.html:79
+msgid "products"
+msgstr "محصولات "
+
+#: templates/favorites/favorite.html:89
+msgid "empty wishlist"
+msgstr "خالی کردن لیست علاقه مندی ها"
+
+#: views.py:58
+msgid "all products successfully removed from your wishlist."
+msgstr "لیست علاقه مندی های شما با موفیت خالی شد"
+
+#: views.py:61
+msgid "your favorite is already empty."
+msgstr "لیست علاقه مندی های شما خالی است"

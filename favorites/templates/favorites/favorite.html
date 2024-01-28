@@ -1,0 +1,142 @@
+{% extends '_base.html'%}
+
+{% load static %}
+{% load i18n %}
+{% load persian_translation_tags %}
+{% comment %} {% load crispy_forms_tags %}
+{% load comment_tag %} {% endcomment %}
+
+
+{% block content %}  
+    {% include "top_header.html" with header_name="علاقه مندی ها" %}
+    <!-- Main Content Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="page-content-inner ptb--80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-md--50">
+                            <div class="row no-gutters">
+                                <div class="col-12">
+                                    {% if cart %}
+                                        <div class="table-content table-responsive">
+                                            <table class="table text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>&nbsp;</th>
+                                                        <th>عکس محصول</th>
+                                                        <th>نام محصول</th>
+                                                        <th>قیمت</th>
+                                                        <th>مقدار</th>
+                                                        {% comment %} <th>مجموع</th> {% endcomment %}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in favorite %}
+                                                        <tr>
+                                                            <td class="product-remove text-left">
+                                                                <a href="{% url "favorite_remove" item.product_obj.id %}">
+                                                                    <i class="flaticon flaticon-cross"></i>
+                                                                </a>
+                                                            </td>
+                                                            <td class="product-thumbnail text-left">
+                                                                <img src="{{ item.product_obj.image.url }}" alt="Product Thumnail">
+                                                            </td>
+                                                            <td class="product-name">
+                                                                <h3>
+                                                                    <a href="{{ item.product_obj.get_absolute_url }}">{{ item.product_obj.name }}</a>
+                                                                </h3>
+                                                            </td> 
+                                                            <td class="product-price">
+                                                                <span class="product-price-wrapper">
+                                                                    <span class="money">{{ item.product_obj.price|translate_number }} {% trans "$" %}</span>
+                                                                </span>
+                                                            </td>
+                                                            <td class="product-quantity">
+                                                                <form class="d-flex" method="POST" action="{% url "cart_add" item.product_obj.id%}">
+                                                                    {% csrf_token %}
+                                                                    <div class="quantity">
+                                                                        <input type="number" class="quantity-input" name="quantity" id="qty-1" value="{{ item.quantity }}" min="1">
+                                                                    </div>
+                                                                
+                                                                </form>
+
+                                                            </td>
+                                                            {% comment %} <td class="product-total-price">
+                                                                <span class="product-price-wrapper">
+                                                                    <span class="money">{{ item.total_price|translate_number }} {% trans "$" %}</span>
+                                                                </span>
+                                                            </td> {% endcomment %}
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>  
+                                    {% else %}
+                                        <p>{% trans "wishlist is empty! please add some products to the wishlist" %}</p>
+                                        <a href="{% url "product_list" %}">{% trans "products" %}</a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                            {% if not favorite.is_empty %}
+                                <div class="row no-gutters border-top pt--20 mt--20">
+                                    <div class="col-sm-6 text-sm-right">
+                                        <form action="{% url "favorite_clear" %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="cart-form__btn">{% trans "empty wishlist" %}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        
+                    </div>
+                    {% comment %} <div class="col-lg-4">
+                        <div class="cart-collaterals">
+                            <div class="cart-totals">
+                                <div class="cart-calculator">
+                                    <div class="cart-calculator__item order-total">
+                                        <div class="cart-calculator__item--head">
+                                            <span>مجموع</span>
+                                        </div>
+                                        <div class="cart-calculator__item--value">
+                                            <span class="product-price-wrapper">
+                                                <span>{{ cart.get_total_product}} عدد</span>
+                                            </span>
+                                        </div>
+                                        <div class="cart-calculator__item--head">
+                                            <span>جمع کل</span>
+                                        </div>
+                                        <div class="cart-calculator__item--value">
+                                            <span class="product-price-wrapper">
+                                                <span class="money">{{ cart.get_total_price}} تومان</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url "order_create" %}" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
+                                {% trans "checkout" %}
+                            </a>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper Start -->
+
+    <div class="searchform__popup" id="searchForm">
+        <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+        <div class="searchform__body">
+            <p>در باکس زیر عبارت خود را وارد کنید</p>
+            <form class="searchform" method="GET" action="{% url 'product_search' %}">
+                <input type="text" name="p_name" id="popup-search" class="searchform__input" placeholder="جستجو در بین محصولات...">
+                <button type="submit" class="searchform__submit"><i class="flaticon flaticon-magnifying-glass-icon"></i></button>
+            </form>
+            
+        </div>
+    </div>
+    
+
+{% endblock %}
